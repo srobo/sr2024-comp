@@ -1,0 +1,43 @@
+teams:
+  - name: level-2-bar
+    display_name: SUSU Level 2 Bar
+    teams:
+      # TODO: arrange these appropriately
+      - ABS
+      - BPV
+      - BRK
+      - CLY
+      - ELC
+      - EWS
+      - FAR
+      - HAB
+      - HAM
+      - HAY
+      - HBS
+      - HEA
+      - HRS
+      - HSO
+      - HWM
+      - HZW
+      - KAA
+      - KEG
+      - KEV
+      - LRS
+      - MAI
+      - PSC
+      - QMC
+      - RGS
+      - RTS
+      - SHB
+      - SOG
+      - TLC
+      - WGS
+      - WMC
+
+  - name: level-3-north
+    display_name: SUSU Level 3 North
+    teams: []
+
+  - name: level-3-south
+    display_name: SUSU Level 3 South
+    teams: []

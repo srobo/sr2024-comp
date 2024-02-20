@@ -1,0 +1,91 @@
+teams:
+    ABS:
+        name: Abingdon School
+        rookie: false
+    BPV:
+        name: Barton Peveril College
+        rookie: false
+    BRK:
+        name: Brockenhurst College
+        rookie: false
+    CLY:
+        name: The College of Richard Collyer
+        rookie: false
+    ELC:
+        name: Eltham College
+        rookie: false
+    EWS:
+        name: Ellen Wilkinson School for Girls
+        rookie: true
+    FAR:
+        name: Faringdon Community College
+        rookie: false
+    HAB:
+        name: Haberdashers’ Schools
+        rookie: false
+    HAM:
+        name: Hampton School
+        rookie: false
+    HAY:
+        name: Haydon School
+        rookie: true
+    HBS:
+        name: The Henry Box School
+        rookie: true
+    HEA:
+        name: Hertswood Academy
+        rookie: false
+    HRS:
+        name: Hills Road Sixth Form College
+        rookie: false
+    HSO:
+        name: Headington School
+        rookie: false
+    HWM:
+        name: Harris Westminster Sixth Form
+        rookie: false
+    HZW:
+        name: Hazelwick School
+        rookie: false
+    KAA:
+        name: Kensington Aldridge Academy
+        rookie: true
+    KEG:
+        name: King Edward VI Grammar School, Chelmsford
+        rookie: false
+    KEV:
+        name: King Edward VI School, Southampton
+        rookie: false
+    LRS:
+        name: Long Road School
+        rookie: true
+    MAI:
+        name: Gymnasium Markt Indersdorf
+        rookie: false
+    PSC:
+        name: Peter Symonds
+        rookie: false
+    QMC:
+        name: Queen Mary’s College
+        rookie: false
+    RGS:
+        name: Royal Grammar School Guildford
+        rookie: false
+    RTS:
+        name: Ruthin School
+        rookie: false
+    SHB:
+        name: Sherborne School
+        rookie: false
+    SOG:
+        name: St Olave’s Grammar School
+        rookie: false
+    TLC:
+        name: The Ladies’ College, Guernsey
+        rookie: false
+    WGS:
+        name: Wisbech Grammar School
+        rookie: false
+    WMC:
+        name: Westminster City School
+        rookie: false

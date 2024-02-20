@@ -1,0 +1,70 @@
+match_slot_lengths:
+  pre: 60
+  match: 150
+  post: 60
+  total: 270
+#
+# Various staging related times, in seconds before the actual match start
+staging:
+  # The earliest teams can present themselves for a match
+  opens: 300
+  # The time by which teams _must_ be in staging
+  closes: 120
+  # How long staging is open for; equal to `opens - closes`
+  duration: 180
+  # How long before the start of the match to signal to shepherds they
+  # should start looking for teams
+  signal_shepherds:
+    # TODO: configure these times to allow for different distances from the arena?
+    Shepherd Level 2 Bar: 180
+    Shepherd Level 3 South: 180
+    Shepherd Level 3 North: 180
+  # How long before the start of the match to signal to teams they should
+  # go to staging
+  signal_teams: 180
+#
+timezone: Europe/London
+#
+delays: []
+#
+match_periods:
+  league:
+  - start_time: 2023-03-09 13:10:00+00:00
+    # Allow enough time for the virtual competition matches but not enough to
+    # also pick up those from the physical competition.
+    end_time: 2023-03-09 14:40:00+00:00
+    max_end_time: 2023-03-09 15:00:00+00:00
+    description: Virtual league
+
+#
+  - start_time: 2024-04-13 13:30:00+01:00
+    end_time: 2024-04-13 16:28:00+01:00
+    max_end_time: 2024-04-13 16:30:00+01:00
+    description: Saturday league, afternoon
+
+#
+  - start_time: 2024-04-14 10:00:00+01:00
+    end_time: 2024-04-14 12:40:00+01:00
+    max_end_time: 2024-04-14 12:42:00+01:00
+    description: Sunday league, morning
+
+#
+  knockout:
+  - start_time: 2024-04-14 13:45:00+01:00
+    end_time: 2024-04-14 15:25:00+01:00
+    max_end_time: 2024-04-14 15:40:00+01:00
+    description: Knockouts
+
+league:
+  # Extra spacing before an arbitrary set of matches
+  # This value is ignored for matches which occur at the start of a period
+  # since no additional time is needed there.
+  extra_spacing: []
+#
+knockout:
+  round_spacing: 300 # Delay between knockout rounds
+  final_delay: 180   # Extra delay before the finals
+  single_arena:
+    rounds: 0
+    arenas:
+    - main
