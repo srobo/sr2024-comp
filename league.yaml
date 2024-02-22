@@ -1,1 +1,85 @@
-matches: {}
+matches:
+  0:
+    main:
+    - BPV
+    - CLY
+    - HAB
+    - HAY
+  1:
+    main:
+    - HRS
+    - HSO
+    - HWM
+    - HAB
+  2:
+    main:
+    - KEG
+    - MAI
+    - HSO
+    - RGS
+  3:
+    main:
+    - RTS
+    - HWM
+    - HAY
+    - SOG
+  4:
+    main:
+    - RGS
+    - HRS
+    - SOG
+    - TLC
+  5:
+    main:
+    - TLC
+    - WMC
+    - KEG
+    - BPV
+  6:
+    main:
+    - MAI
+    - RTS
+    - WMC
+    - CLY
+  7:
+    main:
+    - HWM
+    - SOG
+    - MAI
+    - HRS
+  8:
+    main:
+    - SOG
+    - HAY
+    - CLY
+    - KEG
+  9:
+    main:
+    - CLY
+    - BPV
+    - RGS
+    - HSO
+  10:
+    main:
+    - HAY
+    - HAB
+    - HRS
+    - RTS
+  11:
+    main:
+    - HSO
+    - KEG
+    - RTS
+    - WMC
+  12:
+    main:
+    - WMC
+    - RGS
+    - TLC
+    - HWM
+  13:
+    main:
+    - HAB
+    - TLC
+    - BPV
+    - MAI
