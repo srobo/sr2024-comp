@@ -1,3 +1,27 @@
+from __future__ import annotations
+
+from sr.comp.match_period import Match
+
+
+def render_int(value: int | None) -> int | None:
+    """
+    Process a maybe missing integer value towards a canonical display form.
+    """
+    if not value:
+        # Display zeros as empty inputs
+        return None
+    return value
+
+
+def parse_int(value: str | None) -> int:
+    """
+    Parse a maybe missing integer value towards an integer.
+    """
+    if value is None or value == '':
+        return 0
+    return int(value)
+
+
 class Converter:
     def form_team_to_score(self, form, zone_id):
         """
@@ -9,6 +33,10 @@ class Converter:
                 form.get(f'disqualified_{zone_id}', None) is not None,
             'present':
                 form.get(f'present_{zone_id}', None) is not None,
+            'left_scoring_zone':
+                form.get(f'left_scoring_zone_{zone_id}') is not None,
+            'robot_asteroids':
+                parse_int(form.get(f'robot_asteroids_{zone_id}')),
         }
 
     def form_to_score(self, match, form):
@@ -29,13 +57,23 @@ class Converter:
         zones = list(zone_ids) + ['other']
         arena = {}
         for zone in zones:
-            arena[zone] = {'tokens': form.get(f'tokens_{zone}', '')}
+            arena[zone] = {
+                'egg_on_planet': form.get(f'egg_on_planet_{zone_id}') is not None,
+                'asteroids': parse_int(form.get(f'asteroids_{zone_id}')),
+                'spaceships': parse_int(form.get(f'spaceships_{zone_id}')),
+                'spaceship_asteroids': parse_int(form.get(f'spaceship_asteroids_{zone_id}')),
+            }
+
+        other = {
+            'spaceships_no_planet': parse_int(form.get('spaceships_no_planet')),
+        }
 
         return {
             'arena_id': match.arena,
             'match_number': match.num,
             'teams': teams,
             'arena_zones': arena,
+            'other': other,
         }
 
     def score_to_form(self, score):
@@ -52,8 +90,16 @@ class Converter:
             form[f'disqualified_{zone_id}'] = info.get('disqualified', False)
             form[f'present_{zone_id}'] = info.get('present', True)
 
-        for zone, info in score.get('arena_zones', {}).items():
-            form[f'tokens_{zone}'] = info['tokens'].upper()
+            form[f'left_scoring_zone_{zone_id}'] = info['left_scoring_zone']
+            form[f'robot_asteroids_{zone_id}'] = render_int(info['robot_asteroids'])
+
+        for zone_id, info in score.get('arena_zones', {}).items():
+            form[f'asteroids_{zone_id}'] = render_int(info['asteroids'])
+            form[f'spaceships_{zone_id}'] = render_int(info['spaceships'])
+            form[f'spaceship_asteroids_{zone_id}'] = render_int(info['spaceship_asteroids'])
+            form[f'egg_on_planet_{zone_id}'] = info['egg_on_planet']
+
+        form['spaceships_no_planet'] = score['other']['spaceships_no_planet']
 
         return form
 
@@ -71,9 +117,14 @@ class Converter:
                 form[f'tla_{zone_id}'] = tla
                 form[f'disqualified_{zone_id}'] = False
                 form[f'present_{zone_id}'] = False
+                form[f'left_scoring_zone_{zone_id}'] = False
+                form[f'egg_on_planet_{zone_id}'] = False
 
-            form[f'tokens_{zone_id}'] = ''
+                form[f'robot_asteroids_{zone_id}'] = None
+                form[f'asteroids_{zone_id}'] = None
+                form[f'spaceships_{zone_id}'] = None
+                form[f'spaceship_asteroids_{zone_id}'] = None
 
-        form['tokens'] = ''
+        form['spaceships_no_planet'] = None
 
         return form
