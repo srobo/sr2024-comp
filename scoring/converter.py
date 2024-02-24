@@ -56,8 +56,8 @@ class Converter:
 
         zones = list(zone_ids) + ['other']
         arena = {}
-        for zone in zones:
-            arena[zone] = {
+        for zone_id in zones:
+            arena[zone_id] = {
                 'egg_on_planet': form.get(f'egg_on_planet_{zone_id}') is not None,
                 'asteroids': parse_int(form.get(f'asteroids_{zone_id}')),
                 'spaceships': parse_int(form.get(f'spaceships_{zone_id}')),
