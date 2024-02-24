@@ -1,0 +1,33 @@
+scores:
+  - team: ABS
+    league_points: 5
+  - team: BPV
+    league_points: 5
+  - team: CLY
+    league_points: 5
+  - team: ELC
+    league_points: 5
+  - team: HAB
+    league_points: 5
+  - team: HAM
+    league_points: 5
+  - team: HRS
+    league_points: 5
+  - team: HWM
+    league_points: 5
+  - team: HZW
+    league_points: 5
+  - team: MAI
+    league_points: 5
+  - team: RGS
+    league_points: 5
+  - team: RTS
+    league_points: 5
+  - team: SHB
+    league_points: 5
+  - team: SOG
+    league_points: 5
+  - team: TLC
+    league_points: 5
+  - team: WMC
+    league_points: 5
