@@ -59,7 +59,7 @@ class Converter:
         for zone_id in zones:
             arena[zone_id] = {
                 'egg_on_planet': form.get(f'egg_on_planet_{zone_id}') is not None,
-                'asteroids': parse_int(form.get(f'asteroids_{zone_id}')),
+                'asteroids': parse_int(form.get(f'planet_asteroids_{zone_id}')),
                 'spaceships': parse_int(form.get(f'spaceships_{zone_id}')),
                 'spaceship_asteroids': parse_int(form.get(f'spaceship_asteroids_{zone_id}')),
             }
@@ -94,7 +94,7 @@ class Converter:
             form[f'robot_asteroids_{zone_id}'] = render_int(info['robot_asteroids'])
 
         for zone_id, info in score.get('arena_zones', {}).items():
-            form[f'asteroids_{zone_id}'] = render_int(info['asteroids'])
+            form[f'planet_asteroids_{zone_id}'] = render_int(info['asteroids'])
             form[f'spaceships_{zone_id}'] = render_int(info['spaceships'])
             form[f'spaceship_asteroids_{zone_id}'] = render_int(info['spaceship_asteroids'])
             form[f'egg_on_planet_{zone_id}'] = info['egg_on_planet']
@@ -121,7 +121,7 @@ class Converter:
                 form[f'egg_on_planet_{zone_id}'] = False
 
                 form[f'robot_asteroids_{zone_id}'] = None
-                form[f'asteroids_{zone_id}'] = None
+                form[f'planet_asteroids_{zone_id}'] = None
                 form[f'spaceships_{zone_id}'] = None
                 form[f'spaceship_asteroids_{zone_id}'] = None
 

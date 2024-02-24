@@ -21,17 +21,17 @@
 </foreignObject>
 {% endmacro %}
 
-{% macro input_zone_asteroids(x, y, corner) %}
-<foreignObject x="{{ x + 5 }}" y="{{ y }}" width="90" height="30">
-  <label for="asteroids_{{ corner }}">Asteroids</label>
+{% macro input_zone_planet_asteroids(x, y, corner) %}
+<foreignObject x="{{ x + 5 }}" y="{{ y }}" width="150" height="30">
+  <label for="planet_asteroids_{{ corner }}">Planet Asteroids</label>
 </foreignObject>
-<foreignObject x="{{ x + 100 }}" y="{{ y }}" width="80" height="30">
+<foreignObject x="{{ x + 160 }}" y="{{ y }}" width="80" height="30">
   <input
     class="tokens"
     type="text"
-    id="asteroids_{{ corner }}"
-    name="asteroids_{{ corner }}"
-    value="{{ request.form.get('asteroids_{}'.format(corner)) | empty_if_none }}"
+    id="planet_asteroids_{{ corner }}"
+    name="planet_asteroids_{{ corner }}"
+    value="{{ request.form.get('planet_asteroids_{}'.format(corner)) | empty_if_none }}"
     pattern="\d*"
   />
 </foreignObject>
@@ -78,9 +78,9 @@
 {% endmacro %}
 
 {% macro numeric_inputs(zone) %}
-  {{ input_zone_asteroids(10, 0, zone) }}
-  {{ input_zone_spaceships(0, 35, zone) }}
-  {{ input_zone_spaceship_asteroids(-45, 70, zone) }}
+  {{ input_zone_planet_asteroids(-40, 0, zone) }}
+  {{ input_zone_spaceships(10, 35, zone) }}
+  {{ input_zone_spaceship_asteroids(-35, 70, zone) }}
 {% endmacro %}
 
 {% macro checkbox_inputs(zone) %}
