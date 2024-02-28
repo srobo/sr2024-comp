@@ -69,26 +69,48 @@
 </foreignObject>
 {% endmacro %}
 
+{% macro input_present(x, y, corner) %}
+{{ input_checkbox(x, y, 65, corner, "present", "Present") }}
+{% endmacro %}
+
+{% macro input_disqualified(x, y, corner) %}
+{{ input_checkbox(x, y, 105, corner, "disqualified", "Disqualified") }}
+{% endmacro %}
+
 {% macro input_left_planet(x, y, corner) %}
-{{ input_checkbox(x,y,150,corner,"left_planet","Fully Left Planet")}}
+{{ input_checkbox(x, y, 135, corner, "left_planet", "Fully Left Planet")}}
 {% endmacro %}
 
 {% macro input_egg_on_planet(x, y, corner) %}
-{{ input_checkbox(x,y,130,corner,"egg_on_planet","Egg on planet")}}
+{{ input_checkbox(x, y, 110, corner, "egg_on_planet", "Egg on planet")}}
+{% endmacro %}
+
+{% macro input_egg_in_ship(x, y, corner) %}
+{{ input_checkbox(x, y, 95, corner, "egg_in_ship", "Egg in 'Ship")}}
 {% endmacro %}
 
 {% macro numeric_inputs(zone) %}
   {{ input_zone_planet_asteroids(-40, 0, zone) }}
-  {{ input_zone_spaceships(10, 35, zone) }}
-  {{ input_zone_spaceship_asteroids(-35, 70, zone) }}
+  {{ input_zone_spaceships(10, 32, zone) }}
+  {{ input_zone_spaceship_asteroids(-35, 64, zone) }}
 {% endmacro %}
 
 {% macro checkbox_inputs(zone) %}
   {{ input_present(70, 0, zone) }}
-  {{ input_left_planet(0, 35, zone) }}
-  {{ input_egg_on_planet(20, 70, zone) }}
-  {{ input_disqualified(30, 105, zone) }}
+  {{ input_left_planet(0, 32, zone) }}
+  {{ input_disqualified(30, 64, zone) }}
+  {{ input_egg_on_planet(25, 106, zone) }}
+  {{ input_egg_in_ship(40, 138, zone) }}
 {% endmacro %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .score-sheet form label {
+      font-size: 1em;
+    }
+  </style>
+{% endblock %}
 
 {% block background %}
   <rect height="700" width="700" stroke="#000" y="0" x="0" stroke-width="2" fill="#f4f3ff"/>
@@ -105,27 +127,27 @@
 {% endblock %}
 
 {% block zone_0 %}
-  <g transform="translate(135 10)">{{ checkbox_inputs(0) }}</g>
-  <g transform="translate(360 10)">{{ numeric_inputs(0) }}</g>
-  {{ input_tla(265, 170, 0) }}
+  <g transform="translate(135 5)">{{ checkbox_inputs(0) }}</g>
+  <g transform="translate(360 35)">{{ numeric_inputs(0) }}</g>
+  {{ input_tla(265, 180, 0) }}
 {% endblock %}
 
 {% block zone_1 %}
   {{ input_tla(520, 200, 1) }}
-  <g transform="translate(480 250)">{{ numeric_inputs(1) }}</g>
-  <g transform="translate(480 370)">{{ checkbox_inputs(1) }}</g>
+  <g transform="translate(485 245)">{{ numeric_inputs(1) }}</g>
+  <g transform="translate(495 355)">{{ checkbox_inputs(1) }}</g>
 {% endblock %}
 
 {% block zone_2 %}
-  {{ input_tla(265, 490, 2) }}
-  <g transform="translate(110 545)">{{ checkbox_inputs(2) }}</g>
-  <g transform="translate(350 580)">{{ numeric_inputs(2) }}</g>
+  {{ input_tla(265, 480, 2) }}
+  <g transform="translate(135 525)">{{ checkbox_inputs(2) }}</g>
+  <g transform="translate(360 575)">{{ numeric_inputs(2) }}</g>
 {% endblock %}
 
 {% block zone_3 %}
   {{ input_tla(20, 200, 3) }}
-  <g transform="translate(40 250)">{{ numeric_inputs(3) }}</g>
-  <g transform="translate(0 370)">{{ checkbox_inputs(3) }}</g>
+  <g transform="translate(40 245)">{{ numeric_inputs(3) }}</g>
+  <g transform="translate(0 355)">{{ checkbox_inputs(3) }}</g>
 {% endblock %}
 
 {% block svg_size %}height="850" width="700"{% endblock %}
