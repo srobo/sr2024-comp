@@ -33,8 +33,8 @@ class Converter:
                 form.get(f'disqualified_{zone_id}', None) is not None,
             'present':
                 form.get(f'present_{zone_id}', None) is not None,
-            'left_scoring_zone':
-                form.get(f'left_scoring_zone_{zone_id}') is not None,
+            'left_planet':
+                form.get(f'left_planet_{zone_id}') is not None,
             'robot_asteroids':
                 parse_int(form.get(f'robot_asteroids_{zone_id}')),
         }
@@ -90,7 +90,7 @@ class Converter:
             form[f'disqualified_{zone_id}'] = info.get('disqualified', False)
             form[f'present_{zone_id}'] = info.get('present', True)
 
-            form[f'left_scoring_zone_{zone_id}'] = info['left_scoring_zone']
+            form[f'left_planet_{zone_id}'] = info['left_planet']
             form[f'robot_asteroids_{zone_id}'] = render_int(info['robot_asteroids'])
 
         for zone_id, info in score.get('arena_zones', {}).items():
@@ -117,7 +117,7 @@ class Converter:
                 form[f'tla_{zone_id}'] = tla
                 form[f'disqualified_{zone_id}'] = False
                 form[f'present_{zone_id}'] = False
-                form[f'left_scoring_zone_{zone_id}'] = False
+                form[f'left_planet_{zone_id}'] = False
                 form[f'egg_on_planet_{zone_id}'] = False
 
                 form[f'robot_asteroids_{zone_id}'] = None

@@ -25,26 +25,26 @@ match_number: 0
 teams:
   TLA0:
     disqualified: false
-    left_scoring_zone: true
+    left_planet: true
     present: true
     # Number of asteroids which were in the robot at the end.
     robot_asteroids: 2
     zone: 0
   TLA1:
     disqualified: true
-    left_scoring_zone: false
+    left_planet: false
     present: false
     robot_asteroids: 0
     zone: 1
   TLA2:
     disqualified: false
-    left_scoring_zone: false
+    left_planet: false
     present: true
     robot_asteroids: 0
     zone: 2
   TLA3:
     disqualified: false
-    left_scoring_zone: false
+    left_planet: false
     present: false
     robot_asteroids: 0
     zone: 3

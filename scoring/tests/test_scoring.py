@@ -56,8 +56,8 @@ class ScorerTests(unittest.TestCase):
 
     def setUp(self):
         self.teams_data = {
-            'ABC': {'zone': 0, 'present': True, 'left_scoring_zone': False},
-            'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
+            'ABC': {'zone': 0, 'present': True, 'left_planet': False},
+            'DEF': {'zone': 1, 'present': True, 'left_planet': False},
         }
 
     # Scoring logic

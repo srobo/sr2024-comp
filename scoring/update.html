@@ -69,8 +69,8 @@
 </foreignObject>
 {% endmacro %}
 
-{% macro input_left_scoring_zone(x, y, corner) %}
-{{ input_checkbox(x,y,135,corner,"left_scoring_zone","Fully Left Zone")}}
+{% macro input_left_planet(x, y, corner) %}
+{{ input_checkbox(x,y,150,corner,"left_planet","Fully Left Planet")}}
 {% endmacro %}
 
 {% macro input_egg_on_planet(x, y, corner) %}
@@ -85,7 +85,7 @@
 
 {% macro checkbox_inputs(zone) %}
   {{ input_present(70, 0, zone) }}
-  {{ input_left_scoring_zone(15, 35, zone) }}
+  {{ input_left_planet(0, 35, zone) }}
   {{ input_egg_on_planet(20, 70, zone) }}
   {{ input_disqualified(30, 105, zone) }}
 {% endmacro %}
