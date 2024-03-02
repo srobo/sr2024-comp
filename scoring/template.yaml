@@ -54,4 +54,4 @@ teams:
     zone: 3
 
 other:
-  spaceships_no_planet: 0
+  spaceships_no_planet: 1
