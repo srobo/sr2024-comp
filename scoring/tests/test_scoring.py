@@ -4,6 +4,7 @@ import pathlib
 import random
 import sys
 import unittest
+from typing import TypedDict
 
 import yaml
 
@@ -11,10 +12,18 @@ import yaml
 ROOT = pathlib.Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
-from score import (  # noqa: E402
+from score import (  # type: ignore[import-not-found]  # noqa: E402
     InvalidScoresheetException,
     Scorer,
 )
+
+
+class PlanetState(TypedDict):
+    planet_asteroids: int
+    spaceships: int
+    spaceship_asteroids: int
+    egg_on_planet: bool
+    egg_in_ship: bool
 
 
 def shuffled(text: str) -> str:
@@ -26,27 +35,27 @@ def shuffled(text: str) -> str:
 class ScorerTests(unittest.TestCase):
     longMessage = True
 
-    def construct_scorer(self, robot_contents, zone_tokens):
+    def construct_scorer(self, robot_asteroids, arena_data):
         return Scorer(
             {
-                tla: {**info, 'robot_tokens': robot_contents.get(tla, "")}
+                tla: {**info, 'robot_asteroids': robot_asteroids.get(tla, 0)}
                 for tla, info in self.teams_data.items()
             },
-            {x: {'tokens': y} for x, y in zone_tokens.items()},
+            arena_data,
         )
 
-    def assertScores(self, expected_scores, robot_contents, zone_tokens):
-        scorer = self.construct_scorer(robot_contents, zone_tokens)
-        scorer.validate(None)
+    def assertScores(self, expected_scores, robot_asteroids, arena_data):
+        scorer = self.construct_scorer(robot_asteroids, arena_data)
+        scorer.validate(self.extra_data)
         actual_scores = scorer.calculate_scores()
 
         self.assertEqual(expected_scores, actual_scores, "Wrong scores")
 
-    def assertInvalidScoresheet(self, robot_contents, zone_tokens, *, code):
-        scorer = self.construct_scorer(robot_contents, zone_tokens)
+    def assertInvalidScoresheet(self, robot_asteroids, arena_data, *, code):
+        scorer = self.construct_scorer(robot_asteroids, arena_data)
 
         with self.assertRaises(InvalidScoresheetException) as cm:
-            scorer.validate(None)
+            scorer.validate(self.extra_data)
 
         self.assertEqual(
             code,
@@ -54,17 +63,157 @@ class ScorerTests(unittest.TestCase):
             f"Wrong error code, message was: {cm.exception}",
         )
 
-    def setUp(self):
+    def setUp(self) -> None:
+        super().setUp()
         self.teams_data = {
             'ABC': {'zone': 0, 'present': True, 'left_planet': False},
             'DEF': {'zone': 1, 'present': True, 'left_planet': False},
         }
+        self.arena_data = {
+            0: PlanetState({
+                'planet_asteroids': 0,
+                'spaceships': 1,
+                'spaceship_asteroids': 0,
+                'egg_on_planet': False,
+                'egg_in_ship': False,
+            }),
+            1: PlanetState({
+                'planet_asteroids': 0,
+                'spaceships': 1,
+                'spaceship_asteroids': 0,
+                'egg_on_planet': False,
+                'egg_in_ship': False,
+            }),
+        }
+        self.extra_data = {
+            'spaceships_no_planet': 2,
+        }
+
+    def test_template(self):
+        template_path = ROOT / 'template.yaml'
+        with template_path.open() as f:
+            data = yaml.safe_load(f)
+
+        teams_data = data['teams']
+        arena_data = data.get('arena_zones')
+        extra_data = data.get('other')
+
+        scorer = Scorer(teams_data, arena_data)
+        scores = scorer.calculate_scores()
+
+        scorer.validate(extra_data)
+
+        self.assertEqual(
+            teams_data.keys(),
+            scores.keys(),
+            "Should return score values for every team",
+        )
 
     # Scoring logic
 
-    ...
+    def test_default_positions(self) -> None:
+        self.assertScores(
+            {'ABC': 0, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
 
-    # Invalid characters
+    def test_one_asteroid_in_robot(self) -> None:
+        self.assertScores(
+            {'ABC': 8, 'DEF': 0},
+            robot_asteroids={'ABC': 1},
+            arena_data=self.arena_data,
+        )
+
+    def test_one_asteroid_on_planet(self) -> None:
+        self.arena_data[0]['planet_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 12, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_one_asteroid_in_spaceship(self) -> None:
+        self.arena_data[0]['spaceship_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 40, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_asteroids_planet_and_spaceship(self) -> None:
+        self.arena_data[0]['planet_asteroids'] = 1
+        self.arena_data[0]['spaceship_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 52, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_asteroids_planet_and_robot(self) -> None:
+        self.arena_data[0]['planet_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 20, 'DEF': 0},
+            robot_asteroids={'ABC': 1},
+            arena_data=self.arena_data,
+        )
+
+    def test_asteroids_robot_and_spaceship(self) -> None:
+        self.arena_data[0]['spaceship_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 48, 'DEF': 0},
+            robot_asteroids={'ABC': 1},
+            arena_data=self.arena_data,
+        )
+
+    def test_asteroids_robot_and_spaceship_other_team(self) -> None:
+        self.arena_data[1]['spaceship_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 0, 'DEF': 48},
+            robot_asteroids={'DEF': 1},
+            arena_data=self.arena_data,
+        )
+
+    def test_planet_egg_no_other_points(self) -> None:
+        self.arena_data[0]['egg_on_planet'] = True
+        self.assertScores(
+            {'ABC': 0, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_spaceship_egg_no_other_points(self) -> None:
+        self.arena_data[0]['egg_in_ship'] = True
+        self.assertScores(
+            {'ABC': 0, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_planet_egg(self) -> None:
+        self.arena_data[0]['egg_on_planet'] = True
+        self.arena_data[0]['planet_asteroids'] = 2
+        self.teams_data['ABC']['left_planet'] = True
+        self.arena_data[1]['planet_asteroids'] = 1
+        self.assertScores(
+            # (12 + 12 + 8 + 1) / 4 = 8.25
+            {'ABC': 8.25, 'DEF': 12},
+            robot_asteroids={'ABC': 1},
+            arena_data=self.arena_data,
+        )
+
+    def test_spaceship_egg(self) -> None:
+        self.arena_data[0]['egg_in_ship'] = True
+        self.arena_data[0]['planet_asteroids'] = 2
+        self.teams_data['ABC']['left_planet'] = True
+        self.arena_data[1]['planet_asteroids'] = 1
+        self.assertScores(
+            {'ABC': 0, 'DEF': 12},
+            robot_asteroids={'ABC': 1},
+            arena_data=self.arena_data,
+        )
+
+    # Invalid states
 
     ...
 
@@ -79,7 +228,6 @@ class ScorerTests(unittest.TestCase):
     # Tolerable input deviances
 
     ...
-
 
     # Impossible scenarios
 
