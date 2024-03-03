@@ -6,25 +6,25 @@ arena_zones:
     spaceships: 0
     spaceship_asteroids: 0
     egg_on_planet: false
-    egg_in_ship: false
+    egg_in_spaceship: false
   1:
     planet_asteroids: 0
     spaceships: 0
     spaceship_asteroids: 0
     egg_on_planet: true
-    egg_in_ship: false
+    egg_in_spaceship: false
   2:
     planet_asteroids: 0
     spaceships: 0
     spaceship_asteroids: 0
     egg_on_planet: false
-    egg_in_ship: false
+    egg_in_spaceship: false
   3:
     planet_asteroids: 5
     spaceships: 3
     spaceship_asteroids: 3
     egg_on_planet: false
-    egg_in_ship: false
+    egg_in_spaceship: false
 match_number: 0
 teams:
   TLA0:

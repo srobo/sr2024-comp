@@ -85,8 +85,8 @@
 {{ input_checkbox(x, y, 110, corner, "egg_on_planet", "Egg on Planet")}}
 {% endmacro %}
 
-{% macro input_egg_in_ship(x, y, corner) %}
-{{ input_checkbox(x, y, 95, corner, "egg_in_ship", "Egg in 'Ship")}}
+{% macro input_egg_in_spaceship(x, y, corner) %}
+{{ input_checkbox(x, y, 95, corner, "egg_in_spaceship", "Egg in 'Ship")}}
 {% endmacro %}
 
 {% macro numeric_inputs(zone) %}
@@ -100,7 +100,7 @@
   {{ input_left_planet(0, 32, zone) }}
   {{ input_disqualified(30, 64, zone) }}
   {{ input_egg_on_planet(25, 106, zone) }}
-  {{ input_egg_in_ship(40, 138, zone) }}
+  {{ input_egg_in_spaceship(40, 138, zone) }}
 {% endmacro %}
 
 {% block head %}

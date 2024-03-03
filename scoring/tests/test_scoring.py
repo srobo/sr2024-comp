@@ -23,7 +23,7 @@ class PlanetState(TypedDict):
     spaceships: int
     spaceship_asteroids: int
     egg_on_planet: bool
-    egg_in_ship: bool
+    egg_in_spaceship: bool
 
 
 class ScorerTests(unittest.TestCase):
@@ -69,14 +69,14 @@ class ScorerTests(unittest.TestCase):
                 'spaceships': 1,
                 'spaceship_asteroids': 0,
                 'egg_on_planet': False,
-                'egg_in_ship': False,
+                'egg_in_spaceship': False,
             }),
             1: PlanetState({
                 'planet_asteroids': 0,
                 'spaceships': 1,
                 'spaceship_asteroids': 0,
                 'egg_on_planet': False,
-                'egg_in_ship': False,
+                'egg_in_spaceship': False,
             }),
         }
         self.extra_data = {
@@ -177,7 +177,7 @@ class ScorerTests(unittest.TestCase):
         )
 
     def test_spaceship_egg_no_other_points(self) -> None:
-        self.arena_data[0]['egg_in_ship'] = True
+        self.arena_data[0]['egg_in_spaceship'] = True
         self.assertScores(
             {'ABC': 0, 'DEF': 0},
             robot_asteroids={},
@@ -197,7 +197,7 @@ class ScorerTests(unittest.TestCase):
         )
 
     def test_spaceship_egg(self) -> None:
-        self.arena_data[0]['egg_in_ship'] = True
+        self.arena_data[0]['egg_in_spaceship'] = True
         self.arena_data[0]['planet_asteroids'] = 2
         self.teams_data['ABC']['left_planet'] = True
         self.arena_data[1]['planet_asteroids'] = 1

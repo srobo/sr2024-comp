@@ -22,7 +22,7 @@ NUM_SPACESHIPS = 4
 
 
 def score_team_zone(zone_info, team_info):
-    if zone_info['egg_in_ship']:
+    if zone_info['egg_in_spaceship']:
         # Rule 16
         return 0
 
