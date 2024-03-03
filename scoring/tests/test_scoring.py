@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import copy
 import pathlib
 import sys
 import unittest
@@ -208,23 +209,159 @@ class ScorerTests(unittest.TestCase):
 
     # Invalid states
 
-    ...
+    def test_negative_asteroids_in_robot(self) -> None:
+        self.assertInvalidScoresheet(
+            robot_asteroids={'ABC': -1},
+            arena_data=self.arena_data,
+            code='negative_asteroids',
+        )
 
-    # Missing tokens
+    def test_negative_asteroids_on_planet(self) -> None:
+        self.arena_data[0]['planet_asteroids'] = -1
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='negative_asteroids',
+        )
 
-    ...
+    def test_negative_asteroids_in_spaceship(self) -> None:
+        self.arena_data[0]['spaceship_asteroids'] = -1
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='negative_asteroids',
+        )
 
-    # Extra tokens
+    def test_too_many_asteroids_in_robot(self) -> None:
+        self.assertInvalidScoresheet(
+            robot_asteroids={'ABC': 50},
+            arena_data=self.arena_data,
+            code='wrong_total_asteroids',
+        )
 
-    ...
+    def test_too_many_asteroids_on_planet(self) -> None:
+        self.arena_data[0]['planet_asteroids'] = 50
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_total_asteroids',
+        )
 
-    # Tolerable input deviances
+    def test_too_many_asteroids_in_spaceship(self) -> None:
+        self.arena_data[0]['spaceship_asteroids'] = 50
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_total_asteroids',
+        )
 
-    ...
+    def test_too_many_asteroids_total(self) -> None:
+        self.arena_data[0]['planet_asteroids'] = 12
+        self.arena_data[1]['spaceship_asteroids'] = 12
+        self.assertInvalidScoresheet(
+            robot_asteroids={'DEF': 8, 'ABC': 8},
+            arena_data=self.arena_data,
+            code='wrong_total_asteroids',
+        )
 
-    # Impossible scenarios
+    def test_negative_spaceships_on_planet(self) -> None:
+        self.arena_data[0]['spaceships'] = -1
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='negative_spaceships_on_planet',
+        )
 
-    ...
+    def test_negative_spaceships_elsewhere(self) -> None:
+        self.extra_data['spaceships_no_planet'] = -1
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='negative_spaceships_no_planet',
+        )
+
+    def test_missing_spaceships(self) -> None:
+        self.extra_data['spaceships_no_planet'] = 0
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_total_spaceships',
+        )
+
+    def test_too_many_spaceships_one_planet(self) -> None:
+        self.arena_data[0]['spaceships'] = 42
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_spaceship_disposition',
+        )
+
+    def test_too_many_spaceships_elsewhere(self) -> None:
+        self.extra_data['spaceships_no_planet'] = 42
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='too_many_spaceships_no_planet',
+        )
+
+    def test_too_many_spaceships_overall(self) -> None:
+        # Bump to four teams
+        self.teams_data['GHI'] = copy.deepcopy(self.teams_data['ABC'])
+        self.teams_data['GHI']['zone'] = 2
+        self.teams_data['DEF'] = copy.deepcopy(self.teams_data['ABC'])
+        self.teams_data['DEF']['zone'] = 3
+        self.arena_data[2] = copy.deepcopy(self.arena_data[0])
+        self.arena_data[3] = copy.deepcopy(self.arena_data[0])
+        self.extra_data['spaceships_no_planet'] = 0
+
+        self.arena_data[0]['spaceships'] = 2
+        self.arena_data[1]['spaceships'] = 2
+        self.arena_data[2]['spaceships'] = 3
+        self.arena_data[3]['spaceships'] = 2
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_total_spaceships',
+        )
+
+    def test_bad_spaceship_disposition(self) -> None:
+        self.extra_data['spaceships_no_planet'] = 3
+        self.arena_data[0]['spaceships'] = 2
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_spaceship_disposition',
+        )
+
+    def test_ok_spaceship_disposition_1(self) -> None:
+        self.extra_data['spaceships_no_planet'] = 2
+        self.arena_data[0]['spaceships'] = 2
+        self.arena_data[1]['spaceships'] = 2
+        self.assertScores(
+            {'ABC': 0, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_ok_spaceship_disposition_2(self) -> None:
+        self.extra_data['spaceships_no_planet'] = 3
+        self.arena_data[0]['spaceships'] = 1
+        self.arena_data[1]['spaceships'] = 1
+        self.assertScores(
+            {'ABC': 0, 'DEF': 0},
+            robot_asteroids={},
+            arena_data=self.arena_data,
+        )
+
+    def test_asteroids_in_spaceship_not_on_planet(self) -> None:
+        self.extra_data['spaceships_no_planet'] = 3
+        self.arena_data[0]['spaceships'] = 0
+        self.arena_data[0]['spaceship_asteroids'] = 2
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='impossible_asteroids_in_spaceships',
+        )
 
 
 if __name__ == '__main__':

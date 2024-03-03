@@ -138,9 +138,9 @@ class Scorer:
         num_asteroids = sum(asteroids.values())
         if num_asteroids > MAX_NUM_ASTEROIDS:
             raise InvalidScoresheetException(
-                "Unexpected number of asteroids. Expected at most "
-                f"{MAX_NUM_ASTEROIDS}, but saw {num_asteroids}: {asteroids!r}.",
-                code='wrong_number_asteroids',
+                f"Too many asteroids. Expected at most {MAX_NUM_ASTEROIDS}, "
+                f"but saw {num_asteroids}: {asteroids!r}.",
+                code='wrong_total_asteroids',
             )
 
         impossible_spaceship_asteroids = [
