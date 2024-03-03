@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import pathlib
-import random
 import sys
 import unittest
 from typing import TypedDict
@@ -24,12 +23,6 @@ class PlanetState(TypedDict):
     spaceship_asteroids: int
     egg_on_planet: bool
     egg_in_ship: bool
-
-
-def shuffled(text: str) -> str:
-    values = list(text)
-    random.shuffle(values)
-    return ''.join(values)
 
 
 class ScorerTests(unittest.TestCase):
