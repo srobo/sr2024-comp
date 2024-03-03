@@ -92,7 +92,11 @@ class Scorer:
         expected_planet_spaceships = (NUM_SPACESHIPS - spaceships_no_planet)
         max_planet_spaceships = expected_planet_spaceships * 2
 
-        excess_planet_spaceships = {x: y for x, y in spaceships.items() if y > expected_planet_spaceships}
+        excess_planet_spaceships = {
+            x: y
+            for x, y in spaceships.items()
+            if y > expected_planet_spaceships
+        }
         if excess_planet_spaceships:
             raise InvalidScoresheetException(
                 "Invalid disposition of Spaceships recorded.\n"
