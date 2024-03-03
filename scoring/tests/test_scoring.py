@@ -29,6 +29,15 @@ class PlanetState(TypedDict):
 class ScorerTests(unittest.TestCase):
     longMessage = True
 
+    def add_third_and_fourth_planets(self) -> None:
+        # For simplicity we mostly test on just two planets
+        self.teams_data['GHI'] = copy.deepcopy(self.teams_data['ABC'])
+        self.teams_data['GHI']['zone'] = 2
+        self.teams_data['DEF'] = copy.deepcopy(self.teams_data['ABC'])
+        self.teams_data['DEF']['zone'] = 3
+        self.arena_data[2] = copy.deepcopy(self.arena_data[0])
+        self.arena_data[3] = copy.deepcopy(self.arena_data[0])
+
     def construct_scorer(self, robot_asteroids, arena_data):
         return Scorer(
             {
@@ -305,13 +314,8 @@ class ScorerTests(unittest.TestCase):
         )
 
     def test_too_many_spaceships_overall(self) -> None:
-        # Bump to four teams
-        self.teams_data['GHI'] = copy.deepcopy(self.teams_data['ABC'])
-        self.teams_data['GHI']['zone'] = 2
-        self.teams_data['DEF'] = copy.deepcopy(self.teams_data['ABC'])
-        self.teams_data['DEF']['zone'] = 3
-        self.arena_data[2] = copy.deepcopy(self.arena_data[0])
-        self.arena_data[3] = copy.deepcopy(self.arena_data[0])
+        self.add_third_and_fourth_planets()
+
         self.extra_data['spaceships_no_planet'] = 0
 
         self.arena_data[0]['spaceships'] = 2
