@@ -367,6 +367,52 @@ class ScorerTests(unittest.TestCase):
             code='impossible_asteroids_in_spaceships',
         )
 
+    def test_egg_on_several_planets(self) -> None:
+        self.add_third_and_fourth_planets()
+
+        self.arena_data[0]['egg_on_planet'] = True
+        self.arena_data[1]['egg_on_planet'] = True
+        self.arena_data[2]['egg_on_planet'] = True
+
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_egg_disposition',
+        )
+
+    def test_egg_in_several_spaceships(self) -> None:
+        self.add_third_and_fourth_planets()
+
+        self.arena_data[0]['egg_in_spaceship'] = True
+        self.arena_data[1]['egg_in_spaceship'] = True
+        self.arena_data[2]['egg_in_spaceship'] = True
+
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_egg_disposition',
+        )
+
+    def test_egg_on_planet_and_spaceship_1(self) -> None:
+        self.arena_data[0]['egg_on_planet'] = True
+        self.arena_data[0]['egg_in_spaceship'] = True
+
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_egg_disposition',
+        )
+
+    def test_egg_on_planet_and_spaceship_1(self) -> None:
+        self.arena_data[0]['egg_on_planet'] = True
+        self.arena_data[1]['egg_in_spaceship'] = True
+
+        self.assertInvalidScoresheet(
+            robot_asteroids={},
+            arena_data=self.arena_data,
+            code='wrong_egg_disposition',
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

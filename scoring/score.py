@@ -155,6 +155,30 @@ class Scorer:
                 code='impossible_asteroids_in_spaceships',
             )
 
+        planet_eggs = set(
+            f'planet-{zone_id}'
+            for zone_id, info in self._arena_data.items()
+            if info['egg_on_planet']
+        )
+        spaceship_eggs = set(
+            f'in-spaceship-on-{zone_id}'
+            for zone_id, info in self._arena_data.items()
+            if info['egg_in_spaceship']
+        )
+        all_eggs = planet_eggs | spaceship_eggs
+        if planet_eggs and spaceship_eggs:
+            raise InvalidScoresheetException(
+                "Egg recorded both on Planets and in Spaceships: "
+                f"""{", ".join(all_eggs)}.""",
+                code='wrong_egg_disposition',
+            )
+
+        if len(all_eggs) > 2:
+            raise InvalidScoresheetException(
+                f"""Egg in too many places: {", ".join(all_eggs)}.""",
+                code='wrong_egg_disposition',
+            )
+
 
 if __name__ == '__main__':
     import libproton
