@@ -1,23 +1,27 @@
 arena_id: main
 arena_zones:
   0:
-    asteroids: 1
+    egg_in_spaceship: false
     egg_on_planet: false
+    planet_asteroids: 1
     spaceship_asteroids: 0
     spaceships: 0
   1:
-    asteroids: 3
+    egg_in_spaceship: false
     egg_on_planet: false
+    planet_asteroids: 3
     spaceship_asteroids: 0
     spaceships: 2
   2:
-    asteroids: 1
+    egg_in_spaceship: false
     egg_on_planet: false
+    planet_asteroids: 1
     spaceship_asteroids: 0
     spaceships: 0
   3:
-    asteroids: 2
+    egg_in_spaceship: false
     egg_on_planet: false
+    planet_asteroids: 2
     spaceship_asteroids: 0
     spaceships: 2
 match_number: 4
@@ -26,25 +30,25 @@ other:
 teams:
   HRS:
     disqualified: false
-    left_scoring_zone: true
+    left_planet: true
     present: true
     robot_asteroids: 0
     zone: 1
   RGS:
     disqualified: false
-    left_scoring_zone: true
+    left_planet: true
     present: true
     robot_asteroids: 0
     zone: 0
   SOG:
     disqualified: false
-    left_scoring_zone: true
+    left_planet: true
     present: true
     robot_asteroids: 0
     zone: 2
   TLC:
     disqualified: false
-    left_scoring_zone: true
+    left_planet: true
     present: true
     robot_asteroids: 0
     zone: 3
