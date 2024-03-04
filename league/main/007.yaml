@@ -20,11 +20,6 @@ arena_zones:
     egg_on_planet: false
     spaceship_asteroids: 4
     spaceships: 1
-  other:
-    asteroids: 0
-    egg_on_planet: false
-    spaceship_asteroids: 0
-    spaceships: 0
 match_number: 7
 other:
   spaceships_no_planet: 0

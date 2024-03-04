@@ -54,9 +54,8 @@ class Converter:
             if tla:
                 teams[tla] = self.form_team_to_score(form, zone_id)
 
-        zones = list(zone_ids) + ['other']
         arena = {}
-        for zone_id in zones:
+        for zone_id in zone_ids:
             arena[zone_id] = {
                 'egg_on_planet': form.get(f'egg_on_planet_{zone_id}') is not None,
                 'asteroids': parse_int(form.get(f'asteroids_{zone_id}')),
