@@ -101,7 +101,7 @@ class Converter:
             form[f'egg_on_planet_{zone_id}'] = info['egg_on_planet']
             form[f'egg_in_spaceship_{zone_id}'] = info['egg_in_spaceship']
 
-        form['spaceships_no_planet'] = score['other']['spaceships_no_planet']
+        form['spaceships_no_planet'] = render_int(score['other']['spaceships_no_planet'])
 
         return form
 
