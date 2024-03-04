@@ -9,7 +9,7 @@ arena_zones:
     asteroids: 2
     egg_on_planet: false
     spaceship_asteroids: 0
-    spaceships: 0
+    spaceships: 1
   2:
     asteroids: 0
     egg_on_planet: false
