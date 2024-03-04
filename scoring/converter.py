@@ -33,8 +33,8 @@ class Converter:
                 form.get(f'disqualified_{zone_id}', None) is not None,
             'present':
                 form.get(f'present_{zone_id}', None) is not None,
-            'left_scoring_zone':
-                form.get(f'left_scoring_zone_{zone_id}') is not None,
+            'left_planet':
+                form.get(f'left_planet_{zone_id}') is not None,
             'robot_asteroids':
                 parse_int(form.get(f'robot_asteroids_{zone_id}')),
         }
@@ -58,7 +58,8 @@ class Converter:
         for zone_id in zone_ids:
             arena[zone_id] = {
                 'egg_on_planet': form.get(f'egg_on_planet_{zone_id}') is not None,
-                'asteroids': parse_int(form.get(f'asteroids_{zone_id}')),
+                'egg_in_spaceship': form.get(f'egg_in_spaceship_{zone_id}') is not None,
+                'planet_asteroids': parse_int(form.get(f'planet_asteroids_{zone_id}')),
                 'spaceships': parse_int(form.get(f'spaceships_{zone_id}')),
                 'spaceship_asteroids': parse_int(form.get(f'spaceship_asteroids_{zone_id}')),
             }
@@ -89,16 +90,17 @@ class Converter:
             form[f'disqualified_{zone_id}'] = info.get('disqualified', False)
             form[f'present_{zone_id}'] = info.get('present', True)
 
-            form[f'left_scoring_zone_{zone_id}'] = info['left_scoring_zone']
+            form[f'left_planet_{zone_id}'] = info['left_planet']
             form[f'robot_asteroids_{zone_id}'] = render_int(info['robot_asteroids'])
 
         for zone_id, info in score.get('arena_zones', {}).items():
-            form[f'asteroids_{zone_id}'] = render_int(info['asteroids'])
+            form[f'planet_asteroids_{zone_id}'] = render_int(info['planet_asteroids'])
             form[f'spaceships_{zone_id}'] = render_int(info['spaceships'])
             form[f'spaceship_asteroids_{zone_id}'] = render_int(info['spaceship_asteroids'])
             form[f'egg_on_planet_{zone_id}'] = info['egg_on_planet']
+            form[f'egg_in_spaceship_{zone_id}'] = info['egg_in_spaceship']
 
-        form['spaceships_no_planet'] = score['other']['spaceships_no_planet']
+        form['spaceships_no_planet'] = render_int(score['other']['spaceships_no_planet'])
 
         return form
 
@@ -116,11 +118,12 @@ class Converter:
                 form[f'tla_{zone_id}'] = tla
                 form[f'disqualified_{zone_id}'] = False
                 form[f'present_{zone_id}'] = False
-                form[f'left_scoring_zone_{zone_id}'] = False
+                form[f'left_planet_{zone_id}'] = False
                 form[f'egg_on_planet_{zone_id}'] = False
+                form[f'egg_in_spaceship_{zone_id}'] = False
 
                 form[f'robot_asteroids_{zone_id}'] = None
-                form[f'asteroids_{zone_id}'] = None
+                form[f'planet_asteroids_{zone_id}'] = None
                 form[f'spaceships_{zone_id}'] = None
                 form[f'spaceship_asteroids_{zone_id}'] = None
 

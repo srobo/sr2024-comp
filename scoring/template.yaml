@@ -2,52 +2,56 @@ arena_id: main
 arena_zones:
   0:
     # Number of asteroids which were in the robot at the end.
-    asteroids: 0
+    planet_asteroids: 0
     spaceships: 0
     spaceship_asteroids: 0
     egg_on_planet: false
+    egg_in_spaceship: false
   1:
-    asteroids: 0
+    planet_asteroids: 0
     spaceships: 0
     spaceship_asteroids: 0
     egg_on_planet: true
+    egg_in_spaceship: false
   2:
-    asteroids: 0
+    planet_asteroids: 0
     spaceships: 0
     spaceship_asteroids: 0
     egg_on_planet: false
+    egg_in_spaceship: false
   3:
-    asteroids: 5
+    planet_asteroids: 5
     spaceships: 3
     spaceship_asteroids: 3
     egg_on_planet: false
+    egg_in_spaceship: false
 match_number: 0
 teams:
   TLA0:
     disqualified: false
-    left_scoring_zone: true
+    left_planet: true
     present: true
     # Number of asteroids which were in the robot at the end.
     robot_asteroids: 2
     zone: 0
   TLA1:
     disqualified: true
-    left_scoring_zone: false
+    left_planet: false
     present: false
     robot_asteroids: 0
     zone: 1
   TLA2:
     disqualified: false
-    left_scoring_zone: false
+    left_planet: false
     present: true
     robot_asteroids: 0
     zone: 2
   TLA3:
     disqualified: false
-    left_scoring_zone: false
+    left_planet: false
     present: false
     robot_asteroids: 0
     zone: 3
 
 other:
-  spaceships_no_planet: 0
+  spaceships_no_planet: 1
