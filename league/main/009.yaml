@@ -19,7 +19,7 @@ arena_zones:
     asteroids: 1
     egg_on_planet: false
     spaceship_asteroids: 3
-    spaceships: 1
+    spaceships: 2
   other:
     asteroids: 0
     egg_on_planet: false
