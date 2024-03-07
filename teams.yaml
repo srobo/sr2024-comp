@@ -32,9 +32,6 @@ teams:
     HBS:
         name: The Henry Box School
         rookie: true
-    HEA:
-        name: Hertswood Academy
-        rookie: false
     HRS:
         name: Hills Road Sixth Form College
         rookie: false
@@ -56,9 +53,6 @@ teams:
     KEV:
         name: King Edward VI School, Southampton
         rookie: false
-    LRS:
-        name: Long Road School
-        rookie: true
     MAI:
         name: Gymnasium Markt Indersdorf
         rookie: false
