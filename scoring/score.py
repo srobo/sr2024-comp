@@ -43,7 +43,9 @@ def score_team_zone(zone_info, team_info):
         # Rule 18
         score += LEFT_PLANET_POINTS
 
-    return score
+    # Always return a value of type `int`
+    assert int(score) == score, "Unexpected fractional points"
+    return int(score)
 
 
 class Scorer:
