@@ -199,8 +199,8 @@ class ScorerTests(unittest.TestCase):
         self.teams_data['ABC']['left_planet'] = True
         self.arena_data[1]['planet_asteroids'] = 1
         self.assertScores(
-            # (12 + 12 + 8 + 1) / 4 = 8.25
-            {'ABC': 8.25, 'DEF': 12},
+            # (12 + 12 + 8) / 4 + 1 = 9
+            {'ABC': 9, 'DEF': 12},
             robot_asteroids={'ABC': 1},
             arena_data=self.arena_data,
         )
@@ -211,7 +211,8 @@ class ScorerTests(unittest.TestCase):
         self.teams_data['ABC']['left_planet'] = True
         self.arena_data[1]['planet_asteroids'] = 1
         self.assertScores(
-            {'ABC': 0, 'DEF': 12},
+            # one point for leaving their planet
+            {'ABC': 1, 'DEF': 12},
             robot_asteroids={'ABC': 1},
             arena_data=self.arena_data,
         )

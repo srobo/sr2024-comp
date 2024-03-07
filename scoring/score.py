@@ -22,10 +22,6 @@ NUM_SPACESHIPS = 4
 
 
 def score_team_zone(zone_info, team_info):
-    if zone_info['egg_in_spaceship']:
-        # Rule 16
-        return 0
-
     score = sum((
         # Rule 8
         zone_info['planet_asteroids'] * PLANET_ASTEROID_POINTS,
@@ -35,13 +31,17 @@ def score_team_zone(zone_info, team_info):
         team_info['robot_asteroids'] * ROBOT_ASTEROID_POINTS,
     ))
 
-    if team_info['left_planet']:
-        # Rule 18
-        score += LEFT_PLANET_POINTS
+    if zone_info['egg_in_spaceship']:
+        # Rule 16
+        score = 0
 
     if zone_info['egg_on_planet']:
         # Rule 15
         score /= 4
+
+    if team_info['left_planet']:
+        # Rule 18
+        score += LEFT_PLANET_POINTS
 
     return score
 
