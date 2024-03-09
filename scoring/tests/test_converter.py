@@ -7,7 +7,6 @@ import unittest
 from typing import Sequence, Union
 
 import yaml
-from dateutil.tz import UTC
 from sr.comp.match_period import Match, MatchType
 from sr.comp.types import ArenaName, MatchNumber, TLA
 
@@ -16,6 +15,8 @@ ROOT = pathlib.Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
 from converter import Converter  # type: ignore[import-not-found]  # noqa: E402
+
+UTC = datetime.timezone.utc
 
 
 # Copied from srcomp's factories.
