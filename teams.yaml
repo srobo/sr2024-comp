@@ -14,9 +14,6 @@ teams:
     ELC:
         name: Eltham College
         rookie: false
-    EWS:
-        name: Ellen Wilkinson School for Girls
-        rookie: true
     FAR:
         name: Faringdon Community College
         rookie: false
