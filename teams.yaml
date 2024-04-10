@@ -17,6 +17,7 @@ teams:
     FAR:
         name: Faringdon Community College
         rookie: false
+        dropped_out_after: 20
     HAB:
         name: Haberdashers’ Schools
         rookie: false
@@ -44,6 +45,7 @@ teams:
     KAA:
         name: Kensington Aldridge Academy
         rookie: true
+        dropped_out_after: 20
     KEG:
         name: King Edward VI Grammar School, Chelmsford
         rookie: false
