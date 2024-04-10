@@ -27,6 +27,7 @@ teams:
     HAY:
         name: Haydon School
         rookie: true
+        dropped_out_after: 20
     HBS:
         name: The Henry Box School
         rookie: true
