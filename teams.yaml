@@ -56,6 +56,7 @@ teams:
     PSC:
         name: Peter Symonds
         rookie: false
+        dropped_out_after: 20
     QMC:
         name: Queen Mary’s College
         rookie: false
