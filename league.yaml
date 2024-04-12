@@ -125,3 +125,417 @@ matches:
     - SHB
     - CLY
     - MAI
+  21:
+    main:
+    - SOG
+    - ABS
+    - KEV
+    - HWM
+  22:
+    main:
+    - RGS
+    - HSO
+    - WMC
+    - TLC
+  23:
+    main:
+    - KEG
+    - HZW
+    - BRK
+    - CLY
+  24:
+    main:
+    - HAB
+    - HAM
+    - WGS
+    - WMC
+  25:
+    main:
+    - ABS
+    - KEG
+    - HRS
+    - QMC
+  26:
+    main:
+    - TLC
+    - SHB
+    - MAI
+    - WGS
+  27:
+    main:
+    - KEV
+    - HAM
+    - HBS
+    - BPV
+  28:
+    main:
+    - RGS
+    - QMC
+    - HAB
+    - SOG
+  29:
+    main:
+    - KEG
+    - MAI
+    - RTS
+    - HAM
+  30:
+    main:
+    - ELC
+    - CLY
+    - BPV
+    - HSO
+  31:
+    main:
+    - BRK
+    - ABS
+    - HWM
+    - SHB
+  32:
+    main:
+    - SOG
+    - TLC
+    - HRS
+    - ELC
+  33:
+    main:
+    - QMC
+    - WMC
+    - KEV
+    - HZW
+  34:
+    main:
+    - HRS
+    - WGS
+    - RTS
+    - CLY
+  35:
+    main:
+    - TLC
+    - BRK
+    - HAB
+    - BPV
+  36:
+    main:
+    - HSO
+    - HBS
+    - HZW
+    - SHB
+  37:
+    main:
+    - MAI
+    - SOG
+    - BPV
+    - KEG
+  38:
+    main:
+    - HAB
+    - ELC
+    - HBS
+    - RTS
+  39:
+    main:
+    - WMC
+    - HRS
+    - MAI
+    - HWM
+  40:
+    main:
+    - KEV
+    - RGS
+    - SHB
+    - RTS
+  41:
+    main:
+    - HZW
+    - HWM
+    - ELC
+    - HAM
+  42:
+    main:
+    - CLY
+    - HBS
+    - ABS
+    - RGS
+  43:
+    main:
+    - HSO
+    - BRK
+    - WGS
+    - QMC
+  44:
+    main:
+    - ABS
+    - ELC
+    - HAB
+    - WMC
+  45:
+    main:
+    - WGS
+    - QMC
+    - CLY
+    - HAM
+  46:
+    main:
+    - HBS
+    - SOG
+    - RGS
+    - TLC
+  47:
+    main:
+    - CLY
+    - WMC
+    - ABS
+    - KEG
+  48:
+    main:
+    - QMC
+    - RTS
+    - HWM
+    - HRS
+  49:
+    main:
+    - SHB
+    - KEV
+    - SOG
+    - HZW
+  50:
+    main:
+    - BPV
+    - HAM
+    - CLY
+    - TLC
+  51:
+    main:
+    - MAI
+    - RTS
+    - HSO
+    - RGS
+  52:
+    main:
+    - QMC
+    - ABS
+    - HAM
+    - BRK
+  53:
+    main:
+    - HWM
+    - KEG
+    - HZW
+    - WGS
+  54:
+    main:
+    - KEV
+    - HAB
+    - QMC
+    - MAI
+  55:
+    main:
+    - SHB
+    - RGS
+    - BRK
+    - CLY
+  56:
+    main:
+    - HRS
+    - MAI
+    - TLC
+    - KEG
+  57:
+    main:
+    - RTS
+    - KEV
+    - BRK
+    - HBS
+  58:
+    main:
+    - BPV
+    - WGS
+    - SHB
+    - HRS
+  59:
+    main:
+    - ELC
+    - KEG
+    - HAM
+    - HBS
+  60:
+    main:
+    - RTS
+    - CLY
+    - QMC
+    - HZW
+  61:
+    main:
+    - MAI
+    - ELC
+    - SOG
+    - WGS
+  62:
+    main:
+    - WMC
+    - HRS
+    - HSO
+    - BRK
+  63:
+    main:
+    - HZW
+    - BPV
+    - RGS
+    - HAB
+  64:
+    main:
+    - HWM
+    - SHB
+    - KEV
+    - ELC
+  65:
+    main:
+    - WGS
+    - TLC
+    - WMC
+    - QMC
+  66:
+    main:
+    - HAB
+    - HSO
+    - HAM
+    - SOG
+  67:
+    main:
+    - TLC
+    - HZW
+    - RTS
+    - RGS
+  68:
+    main:
+    - BRK
+    - BPV
+    - MAI
+    - KEV
+  69:
+    main:
+    - CLY
+    - HZW
+    - ELC
+    - HRS
+  70:
+    main:
+    - ABS
+    - WMC
+    - WGS
+    - KEV
+  71:
+    main:
+    - RTS
+    - BRK
+    - CLY
+    - HWM
+  72:
+    main:
+    - SHB
+    - TLC
+    - QMC
+    - BPV
+  73:
+    main:
+    - HRS
+    - HSO
+    - RGS
+    - SOG
+  74:
+    main:
+    - HAM
+    - HWM
+    - ABS
+    - HAB
+  75:
+    main:
+    - KEG
+    - KEV
+    - TLC
+    - HSO
+  76:
+    main:
+    - ELC
+    - WGS
+    - HBS
+    - SHB
+  77:
+    main:
+    - HAM
+    - SOG
+    - WMC
+    - MAI
+  78:
+    main:
+    - HZW
+    - BPV
+    - HWM
+    - ABS
+  79:
+    main:
+    - BRK
+    - HAB
+    - HRS
+    - HBS
+  80:
+    main:
+    - BPV
+    - CLY
+    - KEG
+    - WMC
+  81:
+    main:
+    - HSO
+    - HAB
+    - HZW
+    - MAI
+  82:
+    main:
+    - HBS
+    - QMC
+    - KEG
+    - KEV
+  83:
+    main:
+    - SOG
+    - HRS
+    - SHB
+    - RTS
+  84:
+    main:
+    - RGS
+    - HWM
+    - ELC
+    - WMC
+  85:
+    main:
+    - HBS
+    - MAI
+    - TLC
+    - ABS
+  86:
+    main:
+    - HAM
+    - SHB
+    - HSO
+    - BRK
+  87:
+    main:
+    - WGS
+    - RGS
+    - KEG
+    - HAB
+  88:
+    main:
+    - SOG
+    - RTS
+    - ABS
+    - ELC
+  89:
+    main:
+    - HWM
+    - HBS
+    - BPV
+    - HSO
