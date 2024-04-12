@@ -37,16 +37,28 @@ match_periods:
     description: Virtual league
 
 #
-  - start_time: 2024-04-13 13:30:00+01:00
-    end_time: 2024-04-13 16:28:00+01:00
-    max_end_time: 2024-04-13 16:30:00+01:00
-    description: Saturday league, afternoon
+  - start_time: 2024-04-13 12:40:00+01:00
+    end_time: 2024-04-13 13:58:00+01:00
+    max_end_time: 2024-04-13 14:00:00+01:00
+    description: Saturday league, early afternoon
+
+#
+  - start_time: 2024-04-13 16:00:00+01:00
+    end_time: 2024-04-13 17:18:00+01:00
+    max_end_time: 2024-04-13 17:20:00+01:00
+    description: Saturday league, late afternoon
 
 #
   - start_time: 2024-04-14 10:00:00+01:00
-    end_time: 2024-04-14 12:40:00+01:00
-    max_end_time: 2024-04-14 12:42:00+01:00
+    end_time: 2024-04-14 11:58:00+01:00
+    max_end_time: 2024-04-14 12:00:00+01:00
     description: Sunday league, morning
+
+#
+  - start_time: 2024-04-14 12:40:00+01:00
+    end_time: 2024-04-14 13:58:00+01:00
+    max_end_time: 2024-04-14 14:00:00+01:00
+    description: Sunday league, afternoon
 
 #
   knockout:
