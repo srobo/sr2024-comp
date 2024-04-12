@@ -1,8 +1,8 @@
 match_slot_lengths:
   pre: 60
   match: 150
-  post: 60
-  total: 270
+  post: 90
+  total: 300
 #
 # Various staging related times, in seconds before the actual match start
 staging:
@@ -59,7 +59,12 @@ league:
   # Extra spacing before an arbitrary set of matches
   # This value is ignored for matches which occur at the start of a period
   # since no additional time is needed there.
-  extra_spacing: []
+  extra_spacing:
+    # Fudge the league matches to happen at the right times even though we've
+    # changed the spacing for the physical competition. Note: no change to match
+    # 0 as we've added time to the *end* of the slot.
+    - match_numbers: 1-20
+      duration: -30   # seconds
 #
 knockout:
   round_spacing: 300 # Delay between knockout rounds
