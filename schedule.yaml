@@ -31,8 +31,9 @@ match_periods:
   league:
   - start_time: 2024-03-09 13:10:00+00:00
     # Allow enough time for the virtual competition matches but not enough to
-    # also pick up those from the physical competition.
-    end_time: 2024-03-09 14:40:00+00:00
+    # also pick up those from the physical competition. Note: adjusted for the
+    # change to slot length at the physical competition.
+    end_time: 2024-03-09 14:50:00+00:00
     max_end_time: 2024-03-09 15:00:00+00:00
     description: Virtual league
 
@@ -75,6 +76,8 @@ league:
     # Fudge the league matches to happen at the right times even though we've
     # changed the spacing for the physical competition. Note: no change to match
     # 0 as we've added time to the *end* of the slot.
+    # Note: when un-commenting this also adjust the period length for the
+    # virtual competition.
     # - match_numbers: 1-20
     #   duration: -30   # seconds
 #
