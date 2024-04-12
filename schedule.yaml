@@ -62,9 +62,9 @@ match_periods:
 
 #
   knockout:
-  - start_time: 2024-04-14 13:45:00+01:00
-    end_time: 2024-04-14 15:25:00+01:00
-    max_end_time: 2024-04-14 15:40:00+01:00
+  - start_time: 2024-04-14 14:15:00+01:00
+    end_time: 2024-04-14 15:53:00+01:00
+    max_end_time: 2024-04-14 15:55:00+01:00
     description: Knockouts
 
 league:
