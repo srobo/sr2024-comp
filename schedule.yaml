@@ -9,7 +9,7 @@ staging:
   # The earliest teams can present themselves for a match
   opens: 300
   # The time by which teams _must_ be in staging
-  closes: 120
+  closes: 150
   # How long staging is open for; equal to `opens - closes`
   duration: 180
   # How long before the start of the match to signal to shepherds they
