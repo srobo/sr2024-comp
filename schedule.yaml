@@ -11,7 +11,7 @@ staging:
   # The time by which teams _must_ be in staging
   closes: 150
   # How long staging is open for; equal to `opens - closes`
-  duration: 180
+  duration: 150
   # How long before the start of the match to signal to shepherds they
   # should start looking for teams
   signal_shepherds:
