@@ -10,7 +10,6 @@ teams:
       - RGS
       - HSO
       - WMC
-      - FAR
       - TLC
 
   - name: level-3-north
@@ -29,7 +28,6 @@ teams:
     display_name: SUSU Level 3 South
     teams:
       - QMC
-      - PSC
       - KAA
       - SHB
       - MAI

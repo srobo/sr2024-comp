@@ -14,10 +14,6 @@ teams:
     ELC:
         name: Eltham College
         rookie: false
-    FAR:
-        name: Faringdon Community College
-        rookie: false
-        dropped_out_after: 20
     HAB:
         name: Haberdashers’ Schools
         rookie: false
@@ -56,10 +52,6 @@ teams:
     MAI:
         name: Gymnasium Markt Indersdorf
         rookie: false
-    PSC:
-        name: Peter Symonds
-        rookie: false
-        dropped_out_after: 20
     QMC:
         name: Queen Mary’s College
         rookie: false
