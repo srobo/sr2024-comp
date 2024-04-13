@@ -99,51 +99,51 @@ static_knockout:
         arena: main
         display_name: Heat 1
         start_time: 2024-04-14 14:20:00+01:00
-        teams: [S10, S15, S18, S23]
+        teams: [S23, S15, S18, S10]
       1:
         arena: main
         display_name: Heat 2
         start_time: 2024-04-14 14:25:00+01:00
-        teams: [S11, S14, S19, S22]
+        teams: [S14, S19, S22, S11]
       2:
         arena: main
         display_name: Heat 3
         start_time: 2024-04-14 14:30:00+01:00
-        teams: [S12, S13, S20, S21]
+        teams: [S12, S21, S13, S20]
       3:
         arena: main
         display_name: Heat 4
         start_time: 2024-04-14 14:35:00+01:00
-        teams: [S9, S16, S17, null]
+        teams: [S16, S17, S9, null]
     # Quarters
     1:
       0:
         arena: main
         display_name: Quarter 1
         start_time: 2024-04-14 14:50:00+01:00
-        teams: [S2, S7, '000', '001']
+        teams: ['000', '001', S2, S7]
       1:
         arena: main
         display_name: Quarter 2
         start_time: 2024-04-14 14:55:00+01:00
-        teams: [S3, S6, '010', '011']
+        teams: ['010', S3, '011', S6]
       2:
         arena: main
         display_name: Quarter 3
         start_time: 2024-04-14 15:00:00+01:00
-        teams: [S4, S5, '020', '021']
+        teams: ['020', S4, '021', S5]
       3:
         arena: main
         display_name: Quarter 4
         start_time: 2024-04-14 15:05:00+01:00
-        teams: [S1, S8, '030', '031']
+        teams: [S8, '031', '030', S1]
     # Semis
     2:
       0:
         arena: main
         display_name: Semi 1
         start_time: 2024-04-14 15:20:00+01:00
-        teams: ['100', '110', '111', '101']
+        teams: ['101', '100', '110', '111']
       1:
         arena: main
         display_name: Semi 2
@@ -155,4 +155,4 @@ static_knockout:
         arena: main
         display_name: Final
         start_time: 2024-04-14 15:40:00+01:00
-        teams: ['200', '210', '201', '211']
+        teams: ['210', '211', '201', '200']
