@@ -25,7 +25,9 @@ staging:
 #
 timezone: Europe/London
 #
-delays: []
+delays:
+- delay: 180
+  time: 2024-04-13 12:39:41+01:00
 #
 match_periods:
   league:
