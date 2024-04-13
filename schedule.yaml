@@ -27,7 +27,7 @@ timezone: Europe/London
 #
 delays:
 - delay: 180
-  time: 2024-04-13 12:39:41+01:00
+  time: 2024-04-13 12:40:00+01:00
 #
 match_periods:
   league:
