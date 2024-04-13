@@ -56,7 +56,7 @@ match_periods:
 #
   - start_time: 2024-04-14 10:00:00+01:00
     end_time: 2024-04-14 11:58:00+01:00
-    max_end_time: 2024-04-14 12:00:00+01:00
+    max_end_time: 2024-04-14 12:05:00+01:00
     description: Sunday league, morning
 
 #
