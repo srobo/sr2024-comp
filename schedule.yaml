@@ -29,6 +29,8 @@ delays:
 - delay: 180
   time: 2024-04-13 12:40:00+01:00
 #
+- delay: 240
+  time: 2024-04-13 13:19:46+01:00
 match_periods:
   league:
   - start_time: 2024-03-09 13:10:00+00:00
