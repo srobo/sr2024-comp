@@ -80,7 +80,7 @@ def plot(start_match_num, final_match_num, tlas, highlight, output):
     )
     plt.xlabel("Match Number")
     locs, labels = plt.xticks()
-    locs = [x for x in locs if x >= 0]
+    locs = [x for x in locs if x >= 0][:-1]
     plt.xticks(
         locs,
         [f'{x + start_match_num:g}' for x in locs],
