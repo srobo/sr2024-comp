@@ -11,15 +11,17 @@ import plot_utils
 comp = SRComp('.')
 
 
-def game_point_by_match(tla):
+def game_point_by_match(tla, start_match_num):
     for (_, num), points in {**comp.scores.league.game_points, **comp.scores.knockout.game_points}.items():
+        if num < start_match_num:
+            continue
         if tla in points:
             yield num, points[tla]
         else:
             yield num, 0
 
 
-def plot(final_match_num, tlas, highlight, output):
+def plot(start_match_num, final_match_num, tlas, highlight, output):
     if tlas is None:
         tlas = comp.teams.keys()
 
@@ -49,7 +51,7 @@ def plot(final_match_num, tlas, highlight, output):
             colour.luminance = 0.9
             z_order = 0
 
-        score_list = sorted(game_point_by_match(team.tla))
+        score_list = sorted(game_point_by_match(team.tla, start_match_num))
 
         score_only = [score for (_, score) in score_list]
 
@@ -84,6 +86,12 @@ def plot(final_match_num, tlas, highlight, output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        '--start-match-num',
+        help="Start from the given match number (inclusive, default: %(default)s)",
+        type=int,
+        default=0,
+    )
+    parser.add_argument(
         '--final-match-num',
         help='Exclude Teams not present at this match number',
         type=int,
@@ -107,4 +115,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    plot(args.final_match_num, args.teams, args.highlight, args.output)
+    plot(args.start_match_num, args.final_match_num, args.teams, args.highlight, args.output)
