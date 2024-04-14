@@ -105,7 +105,7 @@ static_knockout:
         arena: main
         display_name: Heat 1
         start_time: 2024-04-14 14:20:00+01:00
-        teams: [S23, S15, S18, S10]
+        teams: [null, S15, S18, S10]
       1:
         arena: main
         display_name: Heat 2
