@@ -1,4 +1,5 @@
 colour
+matplotlib
 numpy
 sr.comp
 PyYAML
