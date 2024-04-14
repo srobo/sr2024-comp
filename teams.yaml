@@ -27,6 +27,7 @@ teams:
     HBS:
         name: The Henry Box School
         rookie: true
+        dropped_out_after: 50
     HRS:
         name: Hills Road Sixth Form College
         rookie: false

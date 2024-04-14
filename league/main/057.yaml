@@ -34,12 +34,6 @@ teams:
     present: true
     robot_asteroids: 0
     zone: 2
-  HBS:
-    disqualified: false
-    left_planet: false
-    present: false
-    robot_asteroids: 0
-    zone: 3
   KEV:
     disqualified: false
     left_planet: true
