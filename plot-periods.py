@@ -30,7 +30,7 @@ def game_point_by_period(tla, match_periods):
         yield total
 
 
-def plot(final_match_num, tlas, highlight, output):
+def plot(final_match_num, tlas, highlight, periods, output):
     if tlas is None:
         tlas = comp.teams.keys()
 
@@ -52,7 +52,9 @@ def plot(final_match_num, tlas, highlight, output):
         for t, x in teams_and_hues
     ]
 
-    match_periods = comp.schedule.match_periods[:-1]
+    match_periods = comp.schedule.match_periods
+    if periods:
+        match_periods = [match_periods[x] for x in periods]
 
     n_cols = len(teams_and_colours) + 3
     width = 1 / n_cols
@@ -98,6 +100,13 @@ if __name__ == "__main__":
         nargs='+',
     )
     parser.add_argument(
+        '--periods',
+        help="Set explicit periods by index",
+        type=int,
+        nargs=argparse.ONE_OR_MORE,
+        required=False,
+    )
+    parser.add_argument(
         '--output',
         required=True,
         help='Where to save the plot',
@@ -105,4 +114,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    plot(args.final_match_num, args.teams, args.highlight, args.output)
+    plot(args.final_match_num, args.teams, args.highlight, args.periods, args.output)
