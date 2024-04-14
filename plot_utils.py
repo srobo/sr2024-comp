@@ -39,7 +39,13 @@ def nth_steps(items):
 def get_teams_with_hues(comp, final_match_num, tlas, highlight):
     # Add 1 to prevent overlap when only showing a small number of teams; due to
     # the circular nature of colour wheels.
-    hues = nth_steps(nth_steps(nth_steps(np.linspace(0., 1., len(comp.teams.keys()) + 1))))
+    hues = np.linspace(0., 1., len(comp.teams.keys()) + 1)
+
+    # Rotate around the space to find colours we like. Manually chosen number
+    # based on eyeballing the resulting plots. Value is mod-N, for N being the
+    # coprime root in `find_coprime`.
+    for _ in range(1):
+        hues = nth_steps(hues)
 
     return [
         (team, hue)
